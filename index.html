@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel = "stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+        <title>Check</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body style="background-image: url('background.png');">
+        <div class = "popup">
+            <p class = "A-V-R-txt1">
+                AGE VERIFICATION
+            </p>
+            <p class = "A-V-R-txt2">REQUIRED</p>
+            <p class = "info">You must be 21 years or older to visit this website</p>
+            <div class = "txt-datebox">
+                <p class = "DOB-txt">Enter your Date of Birth :</p>
+                <input class = "date-box" id = "date-inp" type="date">
+            </div>
+            <button class = "submit-button" type="submit" id = "sub" onclick = "printage()">Submit</button>
+        </div>
+        <script>
+            function printage(){
+                var inp = document.getElementById("date-inp");
+                var inpdate = new Date(inp.value);
+                var today = new Date();
+                var age = today.getFullYear() - inpdate.getFullYear();
+                var monthdiff = today.getMonth() - inpdate.getMonth();
+                if (monthdiff < 0 || (monthdiff === 0 && today.getDate() < inpdate.getDate())) {
+                    age--;
+                }
+                if (age >=21){
+                    window.location.href = "try.html";
+                }
+                else if (age < 21){
+                    alert("You are not eligible to visit this site");
+                }
+                else {
+                    alert("Invalid Date of Birth. Please enter the correct date of birth");
+                }
+                console.log(age);
+            }
+        </script>
+    </body>
+</html>
